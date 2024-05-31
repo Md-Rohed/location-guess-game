@@ -56,28 +56,34 @@ const mapStyle = {
 };
 
 const GameMap = ({ placedPin, correctPin, handleMapClick }) => (
-  <Map
-    initialViewState={{
-      longitude: 10,
-      latitude: 50,
-      zoom: 3.5,
-    }}
-    style={{ width: "100%", height: "600px" }}
-    mapStyle={mapStyle}
-    mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
-    onClick={handleMapClick}
-  >
-    {placedPin && (
-      <Marker longitude={placedPin.lng} latitude={placedPin.lat} color="red" />
-    )}
-    {correctPin && (
-      <Marker
-        longitude={correctPin.lng}
-        latitude={correctPin.lat}
-        color="blue"
-      />
-    )}
-  </Map>
+  <div className="w-full max-w-4xl">
+    <Map
+      initialViewState={{
+        longitude: 10,
+        latitude: 50,
+        zoom: 3.5,
+      }}
+      style={{ width: "100%", height: "600px" }}
+      mapStyle={mapStyle}
+      mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
+      onClick={handleMapClick}
+    >
+      {placedPin && (
+        <Marker
+          longitude={placedPin.lng}
+          latitude={placedPin.lat}
+          color="red"
+        />
+      )}
+      {correctPin && (
+        <Marker
+          longitude={correctPin.lng}
+          latitude={correctPin.lat}
+          color="blue"
+        />
+      )}
+    </Map>
+  </div>
 );
 
 export default GameMap;
